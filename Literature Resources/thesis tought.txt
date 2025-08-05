@@ -1,0 +1,28 @@
+So using EA optimizations (Metaheruistic) to solve/build on for solving 3-SAT, an NP-Complete problem. 3-SAT has been solved of course for 2^n (Brute-force at exponential time) but not in Polynomial Time (P) Which is an important clause
+
+
+Problem is, EA are by nature:
+Stochastic (they use randomness — mutation, crossover, etc.)
+
+Heuristic (they try to find good solutions, not guaranteed ones)
+
+Incomplete (they may never find a valid solution, even if one exists)
+
+
+Hence, I want to focus on 3-SAT Solvers - how do I merge AI into this?
+
+
+
+“How do AI-based solvers (e.g., NeuroSAT, WalkSAT-GA) compare to classical solvers (e.g., MiniSAT, Glucose) on hard 3-SAT instances?”
+
+So
+1. Look into SAT Solvers: MiniSAT, Glucose, CryptoMiniSat, CaDiCaL, etc.
+2. IMPLEMENT DPLL AND CDCL TO UNDERSTAND BETTER HOW THEY WORK (SAT)
+3.RESEARCH SAT IMPLEMENTATION PROGRAMS:
+MiniSAT	CDCL	Classic, clean, minimal CDCL SAT solver. Great for learning and prototyping.
+Glucose	CDCL	Focuses on conflict clause quality. Winner of many SAT competitions.
+CaDiCaL	CDCL	Very clean and modular; used in SAT competitions; actively maintained.
+Kissat	CDCL	Extremely fast and competitive; used in SAT 2020–2023.
+MapleSAT	CDCL + Machine Learning	Uses learned branching heuristics. Very relevant if you're going AI route.
+WalkSAT	Local Search	Not complete. Good for large, random SAT, but not guaranteed to find a solution.
+Z3	SMT Solver (extends SAT)	More general — supports logic beyond Boolean. From Microsoft Research. - MapleSAT/NEUROSAT
