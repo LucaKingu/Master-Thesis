@@ -1,0 +1,9 @@
+#pip install -r "D:\MASTER THESIS\DPLL Algorithm\requirements.txt"
+
+
+numpy==1.26.0
+pandas==2.1.0
+matplotlib==3.8.0
+requests==2.31.0
+pycosat==0.6.3
+python-sat==0.1.8.dev12
