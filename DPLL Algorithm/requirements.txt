@@ -1,5 +1,5 @@
-#pip install -r "D:\MASTER THESIS\DPLL Algorithm\requirements.txt"
-
+'''	pip install -r "D:\MASTER THESIS\DPLL Algorithm\requirements.txt"
+'''
 
 numpy==1.26.0
 pandas==2.1.0
