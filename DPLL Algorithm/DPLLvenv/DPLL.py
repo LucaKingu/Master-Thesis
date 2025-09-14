@@ -1,10 +1,15 @@
+# formula = CNF Formual(List of clauses)
+# assignment = Memory for variable states(True or False) for current branch
 def dpll(formula, assignment=None):
-    if assignment is None:
+    if assignment is None:  # Catering for Mutable Default argument
         assignment = {}
 
+    # return the single literal in the clause, if the clause length = 1
     def unit_clauses(F):
         return [c[0] for c in F if len(c) == 1]
 
+    # Count the number of literals in a single clause
+    # If clause appears as only pos OR only neg, append
     def pure_literals(F):
         counts = {}
         for clause in F:
@@ -18,27 +23,30 @@ def dpll(formula, assignment=None):
                 pures.append(-v)
         return pures
 
+    # Helper method for unit_clauses
     def simplify(F, lit):
         newF = []
         for clause in F:
             if lit in clause:
-                continue  # clause satisfied
+                continue  # Clause satisfied
             if -lit in clause:
                 new_clause = [l for l in clause if l != -lit]
                 if not new_clause:
-                    return None  # empty clause -> UNSAT
+                    return None  # Empty clause -> UNSAT
                 newF.append(new_clause)
             else:
                 newF.append(clause)
         return newF
 
-    # Base cases
+    # Base Case for DPLL
     if not formula:
         return assignment  # SAT
     if any(len(c) == 0 for c in formula):
         return None  # UNSAT
 
-    # Unit propagation
+    # Unit Propagation
+    # The units are simplified and reduced to a single literal
+    # unit_clauses loops over itself to ensure any new single literals are taken care of
     units = unit_clauses(formula)
     while units:
         for u in units:
@@ -50,7 +58,8 @@ def dpll(formula, assignment=None):
         if not formula:
             return assignment
 
-    # Pure literal elimination
+    # Pure Literal Elimination
+    # Similar to the above, remove any literals with a single polarity
     pures = pure_literals(formula)
     while pures:
         for p in pures:
